@@ -1,0 +1,190 @@
+<html>
+
+<head>
+  <style type="text/css">
+    /* 目录样式 */
+    body {
+      /* font-size: 13px; */
+      /* line-height: 20px; */
+    }
+
+    a {
+      display: block;
+      color: white;
+      /* height: 100%;  */
+      /* line-height: 50px;设置字体在块中的高度 */
+      /* margin:auto auto; */
+      /* padding: 5% 10%; */
+      /* margin: 10% 20%; */
+      text-align: center;
+      text-decoration: none;
+      /* font-size: 15px; */
+      /* line-height: 50%;设置字体在块中的高度 */
+    }
+
+    a:hover {
+      background-color: #111;
+    }
+
+    img {
+      vertical-align: middle;
+      border: 0;
+    }
+
+    .no_circle {
+      list-style: none;
+      display: none;
+      color: white;
+    }
+
+
+    ul {
+      /* width: 100%; */
+      /* height: 10%; */
+      list-style-type: none;
+      margin: auto auto;
+      padding: 0px;
+      overflow: hidden;
+      background-color: black;
+      /* border:1px solid #000;添加边框 */
+    }
+
+    li {
+      float: left;
+      list-style-type: none;
+      width: 100%;
+      /* display:flex; */
+      /* height: 100%; */
+    }
+  </style>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+
+    // 生成目录
+    function make(content) {
+      var mmm = '';
+      var ul1 = '';
+      var ul2 = '';
+      var li = '';
+      var ul3 = '';
+      menu = content.split('\n');
+      for (let i = 0; i < menu.length; i++) {
+        console.log(menu);
+
+        ul1 = '<ul><h1><a href="javascript:onclick=show(\'' + i + '\') ">' + menu[i] + '</a></h1></ul>';
+        ul2 = '<ul id="' + i + '" class="no_circle" style="display: none;">'
+        mmm = mmm + ul1;
+        mmm = mmm + ul2;
+
+        // 通过目录名获取文件名
+        var filename = get_filename(menu[i]);
+        console.log(filename);
+
+        filename = filename.split('\n');
+
+        // 通过目录名获取文件名
+        for (let j = 0; j < filename.length; j++) {
+          console.log(filename[j]);
+          li = '<li><h2><a href="article.html?md_name=' + menu[i]+'/'+ filename[j] + '">' + filename[j] + '</a></h2></li>';
+          mmm = mmm + li;
+          console.log(li);
+        }
+        // mmm = mmm + li;
+        ul3 = '</ul>';
+        mmm = mmm + ul3;
+        console.log(mmm);
+        document.getElementById("menu").innerHTML = mmm;
+
+
+      }
+
+    }
+
+
+    // 目录下拉动作
+    function show(d1) {
+      if (document.getElementById(d1).style.display == 'block') {
+        document.getElementById(d1).style.display = 'none';  //触动的层如果处于显示状态，即隐藏
+      }
+      else {
+        document.getElementById(d1).style.display = 'block';  //触动的层如果处于隐藏状态，即显示
+      }
+    }
+
+    // get获取内容函数（目录名的文件）
+    function get_menu(filename) {
+      var ajaxObj = new XMLHttpRequest();
+      ajaxObj.open('get', 'menu/' + filename + '.txt', false);
+      ajaxObj.send();
+      var response = ajaxObj.responseText;
+      // console.log('数据返回成功');
+      console.log(ajaxObj.responseText);
+      console.log(response);
+      return response;
+    }
+
+    // get获取内容函数（目录名对应的文件名的文件）
+    function get_filename(filename) {
+      var ajaxObj = new XMLHttpRequest();
+      ajaxObj.open('get', 'filename/' + filename + '.txt', false);
+      ajaxObj.send();
+      var response = ajaxObj.responseText;
+      // console.log('数据返回成功');
+      console.log(ajaxObj.responseText);
+      console.log(response);
+      return response;
+    }
+
+
+
+  </script>
+
+
+
+
+
+  <div id="menu">
+
+    <ul><a href="javascript:onclick=show('art') ">1</a></ul>
+    <ul id="art" class="no_circle" style="display: none;">
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+    </ul>
+    <ul><a href="javascript:onclick=show('photo') ">2</a></ul>
+    <ul id="photo" class="no_circle" style="display: none;">
+      <li>21</li>
+      <li>22</li>
+      <li>23</li>
+      <li>24</li>
+    </ul>
+    <ul><a href="javascript:onclick=show('home') ">3</a></ul>
+    <ul id="home" class="no_circle" style="display: none;">
+      <li>31</li>
+      <li>32</li>
+      <li>33</li>
+
+    </ul>
+    <ul><a href="javascript:onclick=show('game') ">4</a></ul>
+    <ul id="game" class="no_circle" style="display: none;">
+      <li>41</li>
+      <li>42</li>
+      <li>43</li>
+    </ul>
+  </div>
+
+
+
+  <script>
+    // 目录地址
+    var menudata = get_menu('menu');
+    // 通过目录名获取内容
+    make(menudata);
+  </script>
+
+</body>
+
+</html>
