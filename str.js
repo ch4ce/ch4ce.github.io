@@ -54,7 +54,11 @@ function test(array_md) {
                 h_number = count_h(array_md[i]);     //计算#的数量
 
                 temp = '';
-                temp = array_md[i].substring((h_number + 1));
+                // temp = array_md[i].substring((h_number + 1));
+
+                // temp = '&bull;' + array_md[i].substring((h_number + 1));
+
+                temp = '&bull;';
 
                 
                 console.log(temp)
@@ -63,17 +67,52 @@ function test(array_md) {
                     temp = '&nbsp&nbsp&nbsp&nbsp' + temp;
                 }
 
-                temp = '<a href="#' + i + '" class = "t" >' + temp + '</a><br>'
+                temp = temp + '<a href="#' + i + '" >' + array_md[i].substring((h_number + 1)) + '</a><br>'
                 title = title + temp;
 
 
                 array_md[i] = array_md[i].substring((h_number + 1));
-                array_md[i] = '<h' + h_number + ' id =' + i + ' style="padding-top:10%;margin-top:-10%;">' + array_md[i] + '</h' + h_number + '>';
-
+                // array_md[i] = '<h' + h_number + ' id =' + i + ' style="padding-top:10%;margin-top:-10%;">' + array_md[i] + '</h' + h_number + '>';
+                array_md[i] = '<h' + h_number + ' id =' + i + '>' + array_md[i] + '</h' + h_number + '>';
 
 
 
         }
+
+        // 图片
+        else if(array_md[i].search(/(?<=\!\[.*\]\().*(?=\))/) != -1) {
+            let s = array_md[i].search(/(?<=\!\[.*\]\().*(?=\))/);
+            let e = array_md[i].search(/(?<=\!\[.*\]\(.*)\)/);
+
+            img_src = array_md[i].substr(s,e-s);
+
+            array_md.splice(i, 1, '<img src=\'' + img_src + '\'>');
+
+
+
+        }
+
+        // 链接
+        else if(array_md[i].search(/(?<=\[.*\]\().*\)/) != -1) {
+            let link_s = array_md[i].search(/(?<=\[.*\]\().*\)/);
+            let link_e = array_md[i].search(/(?<=\[.*\]\(.*)\)/);
+
+            let name_s = array_md[i].search(/(?<=\[).*/);
+            let name_e = array_md[i].search(/(?<=\[.*)]/);
+
+            name = array_md[i].substr(name_s,name_e-name_s);
+
+
+
+            link = array_md[i].substr(link_s,link_e-link_s);
+
+            array_md.splice(i, 1, '<a href=\'' + link + '\'>' + name + '</a>');
+
+
+
+        }
+
+
 
         else {
             var code_s = 's';
