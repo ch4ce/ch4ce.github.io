@@ -92,7 +92,7 @@
 
         /* 目录 */
         #nav {
-            line-height: 30px;
+            /* line-height: 30px; */
             /* background-color: #EEEEEE; */
             background-color: rgb(255,250,232);
             height: 90%;
@@ -101,13 +101,27 @@
             /* padding: 5px; */
 
             position: fixed;
-            top: 5%;
+            top: 6%;
+
+            /* 自动滚动条 */
             overflow: auto;
+
+            /* 文字不换行 */
+            white-space:nowrap;
 
             /* top: ; */
             /* bottom */
             /* left; */
             /* right;  */
+        }
+
+        /* 目录锚点 */
+        #nav a {
+            text-decoration: none;
+        }
+
+        #nav a:hover {
+            text-decoration: underline;
         }
 
         /* 文章内容 */
@@ -123,7 +137,7 @@
             /* margin-top: 10%; */
             /* margin-left: 20%; */
 
-            top: 5%;
+            top: 6%;
             left: 20%;
 
             position: fixed;
@@ -178,7 +192,8 @@
             width: 70%;
             /* width: fit-content; */
             color: rgb(51,51,51);
-            background: rgb(246,248,250);
+            background: rgb(240,240,240);
+            /* background: white; */
             font-size: 10px;
             padding: 5px;
             /* margin: 0 auto; */
@@ -187,11 +202,9 @@
 
         }
 
-        /* 目录锚点 */
-        .t {
-            text-decoration: none;
-            /* color: white; */
-        }
+
+
+
 
         /* 自动换行 */
         pre {
@@ -213,7 +226,11 @@
             /*width: 60%;*/
             width: fit-content;
             color: rgb(51,51,51);
-            background: rgb(246,248,250);
+            background: rgb(240,240,240);
+
+            /* color: white; */
+            /* background: black; */
+
             font-size: 10px;
             padding: 2px;
             /* margin: 0 auto; */
@@ -221,6 +238,16 @@
             /* font-family: Helvetica, "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei UI", SimSun, SimHei, arial, sans-serif; */
 
         }
+
+        /* 链接样式 */
+        #markdown a {
+            text-decoration: none;
+        }
+        #markdown a:hover {
+            text-decoration:underline;
+        }
+
+
     </style>
 </head>
 
