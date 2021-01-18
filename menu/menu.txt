@@ -1,4 +1,4 @@
-Linux
-Web
-Re
-Misc
+linux
+web
+re
+misc
