@@ -1,4 +1,5 @@
 <html>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <!-- markdown解析成html的js -->
 <script language="JavaScript" src="str.js"></script>
@@ -11,10 +12,46 @@
             background-color: rgb(255,250,232);
             margin: 0;
             padding:0;
+
+        font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: rgb(51, 51, 51);
+        line-height: 1.6;
         }
 
+    html {
+    font-size: 16px;
+    }
+
+/*github 标题
+#article h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+#article h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+#article h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+#article h4 {
+    font-size: 1.25em;
+}
+#article h5 {
+    font-size: 1em;
+}
+#article h6 {
+   font-size: 1em;
+    color: #777;
+}
+*/
+
         /* 标题行距 */
-        h1 {margin: 0px; padding: 0px;}
+        h1 {margin: 0px; padding: 0px;    border-bottom: 1px solid rgb(0, 0, 0);}
         h2 {margin: 0px; padding: 0px;}
         h3 {margin: 0px; padding: 0px;}
         h4 {margin: 0px; padding: 0px;}
@@ -117,11 +154,17 @@
 
         /* 目录锚点 */
         #nav a {
+            color:#4183C4;
             text-decoration: none;
         }
 
         #nav a:hover {
             text-decoration: underline;
+        }
+
+        #nav a:visited {
+            color:#4183C4;
+    text-decoration:none;
         }
 
         /* 文章内容 */
@@ -147,7 +190,7 @@
         }
 
         #markdown { 
-            font-family:"Microsoft YaHei",微软雅黑;
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
             font-size: 15px;
             width: 95%;
         }
@@ -177,15 +220,20 @@
         }
 
 
+
+
         /* 代码段 */
         .a {
+
+            
+
             /* border: 1px solid #000; */
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
 
-            font-family:"Microsoft YaHei",微软雅黑;
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
 
             /*height: 200px;
             */
@@ -194,13 +242,14 @@
             color: rgb(51,51,51);
             background: rgb(240,240,240);
             /* background: white; */
-            font-size: 10px;
+            /*font-size: 10px;*/
             padding: 5px;
             /* margin: 0 auto; */
 
             /* font-family: Helvetica, "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei UI", SimSun, SimHei, arial, sans-serif; */
 
         }
+
 
 
 
@@ -220,7 +269,7 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
 
-            font-family:"Microsoft YaHei",微软雅黑;
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
             /*height: 200px;
             */
             /*width: 60%;*/
@@ -231,7 +280,7 @@
             /* color: white; */
             /* background: black; */
 
-            font-size: 10px;
+            /*font-size: 10px;*/
             padding: 2px;
             /* margin: 0 auto; */
 
@@ -246,6 +295,9 @@
         #markdown a:hover {
             text-decoration:underline;
         }
+
+
+
 
 
     </style>
@@ -274,6 +326,7 @@
 
     <!-- 目录 -->
     <div id="nav">
+        <h1>目录</h1>
         <p id='tit'>
             loading<br>
             loading<br>
